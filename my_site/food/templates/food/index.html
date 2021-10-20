@@ -1,0 +1,33 @@
+{% extends 'food/base.html' %}
+
+
+<body>
+    {% block body %}
+
+      {% for item in item_list %}
+      <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-2">
+                <img height="150px" width="200px" src="{{ item.item_img }}" alt="">
+            </div>
+
+            <div class="col-md-2">
+                <h2>{{ item.item_name }} </h2> 
+                <h3>{{ item.item_dec }}</h3>
+                <h5>${{ item.item_price }} </h5><br>
+                <h6>{{ item.user_name }}</h6>
+
+                <a href="{% url 'detail' item.id %}"><button class="btn btn-success"> Detail</button></a>
+                <a href="{% url 'edit' item.id %}"><button class="btn btn-primary"> Edit</button></a>
+
+            </div>
+
+        </div><br>
+
+      </div>
+      {% endfor %}
+      
+    {% endblock %}
+</body>
+
+</html>
